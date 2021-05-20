@@ -1,2 +1,16 @@
-# discourse-web-monetization
-Experiment with monetizing Discourse content using Metagov Web Monetization RevShare plugin
+# WebMonetization
+
+WebMonetization is a plugin for monetizing Discourse content with Web Monetization micropayments. This plugin uses the Metagov RevShare plugin to retrieve payment pointers.
+
+## Installation
+
+Follow [Install a Plugin](https://meta.discourse.org/t/install-a-plugin/19157)
+how-to from the official Discourse Meta, using `git clone https://github.com/mashton/web-monetization.git`
+as the plugin command.
+
+## Usage
+
+## Feedback
+
+If you have issues or suggestions for the plugin, please bring them up on
+[Discourse Meta](https://meta.discourse.org).

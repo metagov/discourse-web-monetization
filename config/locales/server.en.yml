@@ -1,0 +1,5 @@
+en:
+  site_settings:
+    web_monetization_enabled: "Enable WebMonetization plugin"
+    web_monetization_metagov_community_slug: "Metagov community slug"
+    web_monetization_metagov_server_url: "Metagov server URL"

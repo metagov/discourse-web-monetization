@@ -1,0 +1,10 @@
+plugins:
+  web_monetization_enabled:
+    default: false
+    client: true
+  web_monetization_metagov_community_slug:
+    default: ""
+    client: true
+  web_monetization_metagov_server_url:
+    default: ""
+    client: true
