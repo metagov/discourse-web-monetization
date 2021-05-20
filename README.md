@@ -1,6 +1,8 @@
 # WebMonetization
 
-WebMonetization is a plugin for monetizing Discourse content with Web Monetization micropayments. This plugin uses the Metagov RevShare plugin to retrieve payment pointers.
+WebMonetization is a plugin for monetizing Discourse content via [Web Monetization](https://webmonetization.org/) payment streams.
+This plugin uses Metagov to retrieve a random payment pointer ([Probabilistic Revenue Sharing](https://webmonetization.org/docs/probabilistic-rev-sharing/)).
+
 
 ## Installation
 
