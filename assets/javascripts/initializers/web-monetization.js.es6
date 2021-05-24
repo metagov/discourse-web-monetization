@@ -1,37 +1,32 @@
 import { ajax } from "discourse/lib/ajax";
 import { withPluginApi } from "discourse/lib/plugin-api";
-import { popupAjaxError } from "discourse/lib/ajax-error";
 
-function fetchPaymentPointer() {
-  return ajax("/web-monetization/pointer.json").catch((error) => {
+function fetchPaymentPointer(topic_id) {
+  const data = { topic_id };
+  return ajax("/web-monetization/pointer.json", { data }).catch((error) => {
+    console.error("Error fetching web monetization pointer");
     if (error) {
-      popupAjaxError(error);
-    } else {
-      console.error("no good")
-      // bootbox.alert(I18n.t("poll.error_while_fetching_voters"));
+      console.error(error);
     }
   });
 }
 
 function initializeWebMonetization(api) {
-  console.log("initializeWebMonetization");
-  fetchPaymentPointer().then((result) => {
-    console.log(result)
-    const node = document.createElement("meta");
-    node.id = "web-monetization";
-    node.name = "monetization";
-    node.content = result.pointer;
-    console.log("Appending node:")
-    console.log(node)
-    document.querySelector("head").appendChild(node);
-  })
-
-  // api.decorateCookedElement(
-  //   (elem) => {
-  //     console.logdecorateCookedElement");
-  //   },
-  //   { id: "web-monetization-meta", onlyStream: true, afterAdopt: true }
-  // );
+  api.onAppEvent("page:topic-loaded", (topic) => {
+    if (!topic || topic.isPrivateMessage) {
+      return;
+    }
+    fetchPaymentPointer(topic.id).then((result) => {
+      console.log(result);
+      const node = document.createElement("meta");
+      node.id = "web-monetization";
+      node.name = "monetization";
+      node.content = result.pointer;
+      console.log("Appending node:");
+      console.log(node);
+      document.querySelector("head").appendChild(node);
+    });
+  });
 }
 
 export default {

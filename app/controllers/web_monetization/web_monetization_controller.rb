@@ -9,6 +9,9 @@ module WebMonetization
 
     def pointer
       if (!SiteSetting.web_monetization_metagov_server_url.empty? && !SiteSetting.web_monetization_metagov_community_slug.empty?)
+        topic_id = params[:topic_id]
+        puts "Topic id is #{topic_id}"
+
         uri = URI("https://#{SiteSetting.web_monetization_metagov_server_url}/api/action/revshare.pick-pointer")
         community = SiteSetting.web_monetization_metagov_community_slug
         headers = {"Content-Type" => "application/json", "X-Metagov-Community" => community}
